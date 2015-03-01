@@ -65,6 +65,7 @@ public class HistoricalStock {
                 
             } catch(Exception e) {
                 System.out.println("database operation error.");
+//                e.printStackTrace();
             }
         
     }

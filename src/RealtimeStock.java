@@ -50,6 +50,7 @@ public class RealtimeStock extends TimerTask {
                 
         } catch(Exception e) {
             System.out.println("database operation error.");
+//            e.printStackTrace();
         }          
        
     }
