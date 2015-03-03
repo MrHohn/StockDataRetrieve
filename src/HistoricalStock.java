@@ -48,7 +48,7 @@ public class HistoricalStock {
                     for (HistoricalQuote dayData : historicalQuotes) {
 
                         Calendar cd = dayData.getDate();
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                         date = dateFormat.format(cd.getTime());
                         open = dayData.getOpen();
                         high = dayData.getHigh();
@@ -65,7 +65,6 @@ public class HistoricalStock {
                 
             } catch(Exception e) {
                 System.out.println("database operation error.");
-//                e.printStackTrace();
             }
         
     }

@@ -29,7 +29,7 @@ public class RealtimeStock extends TimerTask {
         
         cale = Calendar.getInstance();
         java.util.Date taskTime = cale.getTime();
-        SimpleDateFormat  dateFormat = new SimpleDateFormat("MM/dd/yyyy_HH-mm-ss");
+        SimpleDateFormat  dateFormat = new SimpleDateFormat("yyyy-MM-dd_hh-mm-ss");
         String nowTime = dateFormat.format(taskTime);
     
         try {
@@ -41,16 +41,16 @@ public class RealtimeStock extends TimerTask {
             Statement statement = connection.createStatement();
                 
             for(int i = 0; i < StockForecaster.SYMBOLS.length; ++i){
-                price[i] = stock[i].getQuote().getPrice();
-                volume[i] = stock[i].getQuote().getVolume();
-                statement.executeUpdate("INSERT INTO StockRealtime VALUES ('" + StockForecaster.SYMBOLS[i] + "', '" + nowTime + "', " + price[i] + ", " + volume[i] +")");
+                price[i] = stock[i].getQuote(true).getPrice();
+                volume[i] = stock[i].getQuote(true).getVolume();
+                System.out.printf("symbol: %s price: %f volume: %d\n",StockForecaster.SYMBOLS[i], price[i], volume[i]);
+                statement.executeUpdate("INSERT INTO StockRealtime VALUES ('" + StockForecaster.SYMBOLS[i] + "', '" + nowTime + "', " + price[i] + ", " + volume[i] + ")");
             }
 
             connection.close();
                 
         } catch(Exception e) {
             System.out.println("database operation error.");
-//            e.printStackTrace();
         }          
        
     }

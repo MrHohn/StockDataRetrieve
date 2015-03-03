@@ -4,7 +4,7 @@ import java.util.*;
 
 public class StockForecaster {
 
-    public static final int REALTIME_STOCK_INTERVAL = 5;
+    public static final int REALTIME_STOCK_INTERVAL = 30;
     public static final String[] SYMBOLS = {"GOOG","YHOO","AAPL","FB","MSFT"};
     HistoricalStock historicalStock;
     RealtimeStock realtimeStock;
@@ -13,9 +13,9 @@ public class StockForecaster {
     
     public StockForecaster() {  
         
-        historicalStock = new HistoricalStock(1);
-        historicalStock.collectData();
-        
+//        historicalStock = new HistoricalStock(1);
+//        historicalStock.collectData();
+//
         realtimeStockTimer = new Timer();
      
         realtimeStock = new RealtimeStock();
